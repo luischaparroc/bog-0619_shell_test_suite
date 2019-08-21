@@ -1,9 +1,8 @@
 #!/bin/bash
 #
-# run ls with spaces everywhere
+# test simple command /bin/ls
 
-command="exit 257"
-tmp_file="checker_tmp_file_$RANDOM"
+command="exit 259"
 
 # clean up
 stop_shell
@@ -11,18 +10,19 @@ rm -f $tmp_file
 
 # create a pseudo random file
 touch $tmp_file
-# send commands
-echo "$command" | $SHELL > $OUTPUTFILE 2> /dev/null &
+# run command
+echo "$command" | $SHELL
+echo $? > salida
 
 # wait a little bit
 $SLEEP $SLEEPSECONDS
 
 # check the result
-nmatch=`cat $OUTPUTFILE | grep -c "$tmp_file"`
-if [ $nmatch -eq 4 ]; then
-	   print_ok
+nmatch=`cat salida | grep 3| wc -l`
+if [ $nmatch -eq 1 ]; then
+       print_ok
 else
-	   print_ko
+       print_ko
 fi
 
 # clean up
