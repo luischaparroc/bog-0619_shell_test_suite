@@ -2,9 +2,7 @@
 #
 # run ls with spaces everywhere
 
-command="exit 257
-exit 255
-exit 259"
+command="exit 257"
 tmp_file="checker_tmp_file_$RANDOM"
 
 # clean up
