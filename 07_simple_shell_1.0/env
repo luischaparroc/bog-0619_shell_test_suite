@@ -3,22 +3,26 @@
 # simple test with env to check if the output is the same
 
 command="env"
-OUTPUTFILE22="checker_output_$R"
+OUTPUTFILE22="checker_output2_$RANDOM"
+
+# clean up
+stop_shell
+rm -f $OUTPUTFILE22
 
 # send commands
-echo "$command" | $SHELL | head -n -1 | wc -c > $OUTPUTFILE 2> /dev/null &
+echo "$command" | $SHELL | head -n -1 > $OUTPUTFILE 2> /dev/null &
 
 # wait a little bit
 $SLEEP $SLEEPSECONDS
 
-"$command" | head -n -1 | wc -c > $OUTPUTFILE22 2> /dev/null &
+"$command" | head -n -1 > $OUTPUTFILE22 2> /dev/null &
 
 # wait a little bit
 $SLEEP $SLEEPSECONDS
 
 # check the result
-nmatch=`cat $OUTPUTFILE`
-nmatch2=`cat $OUTPUTFILE22`
+nmatch=`cat $OUTPUTFILE | wc -c`
+nmatch2=`cat $OUTPUTFILE22 | wc -c`
 if [ $nmatch -eq $nmatch2 ]; then
 	   print_ok
 else
@@ -27,3 +31,4 @@ fi
 
 # clean up
 stop_shell
+rm -f $OUTPUTFILE22
