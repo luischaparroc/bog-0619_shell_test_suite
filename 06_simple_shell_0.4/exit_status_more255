@@ -28,3 +28,4 @@ fi
 # clean up
 stop_shell
 rm -f $tmp_file
+rm salida
