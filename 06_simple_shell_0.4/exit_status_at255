@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# test simple command /bin/ls
+# test the exit out prove with the limit number
 
 command="exit 255"
 

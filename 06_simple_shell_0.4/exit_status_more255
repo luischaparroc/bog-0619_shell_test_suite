@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# test simple command /bin/ls
+# test exit output with a bigger number than the limit one
 
 command="exit 259"
 
