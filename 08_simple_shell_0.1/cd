@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# simple test with cd to check if can change to the previous directory
+# simple test with cd to check if can change directory
 
 command="cd /tmp
 pwd"
