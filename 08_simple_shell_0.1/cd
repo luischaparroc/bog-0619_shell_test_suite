@@ -1,10 +1,9 @@
 #!/bin/bash
 #
-# simple test with cd to check if can change to the previous directory
+# simple test with cd to check if can change directory
 
 command="cd /tmp
-cd /usr
-cd -"
+pwd"
 tmp_file="checker_tmp_file_$RANDOM"
 
 # clean up
