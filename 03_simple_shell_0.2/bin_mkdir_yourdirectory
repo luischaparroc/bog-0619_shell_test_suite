@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# Author: Michael Sosa
+# mkdir command and check if /bin/mkdir works
+
+command="/bin/mkdir your_directory"
+
+# remove the directory if alredy exist
+rm -r -f your_directory/
+
+# run command
+$command
+
+# check the result
+if [ $? -ne 0 ] ; then
+    print_ko
+else
+    print_ok
+fi
+
+# remove the directory
+rm -r -f your_directory/
