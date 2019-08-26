@@ -1,9 +1,8 @@
 #!/bin/bash
 #
-# COME
+# test the exit out prove with the limit number
 
 command="exit 98"
-tmp_file="checker_tmp_file_$RANDOM"
 
 # clean up
 stop_shell
@@ -11,26 +10,22 @@ rm -f $tmp_file
 
 # create a pseudo random file
 touch $tmp_file
-
-# send commands
-$ECHO "$command" | $SHELL > $OUTPUTFILE 2> $ERROROUTPUTFILE &
-
-# put PATH back
-PATH="$OLDPATH"
+# run command
+echo "$command" | $SHELL
+echo $? > salida
 
 # wait a little bit
 $SLEEP $SLEEPSECONDS
 
-cat $ERROROUTPUTFILE
-
 # check the result
-nmatch=`$CAT $OUTPUTFILE | grep -c "$tmp_file"`
+nmatch=`cat salida | grep 98| wc -l`
 if [ $nmatch -eq 1 ]; then
-    print_ok
+       print_ok
 else
-    print_ko
+       print_ko
 fi
 
 # clean up
 stop_shell
-$RM -f $tmp_file
+rm -f $tmp_file
+rm salida
